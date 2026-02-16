@@ -19,7 +19,7 @@
     "test:install": "playwright install"
   },
   "dependencies": {
-    "@google/genai": "^1.20.0",
+    "openai": "^4.103.0",
     "@supabase/supabase-js": "^2.57.4",
     "@uiw/react-md-editor": "^4.0.8",
     "next": "15.4.4",
