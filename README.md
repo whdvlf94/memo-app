@@ -14,7 +14,7 @@ LocalStorage 기반의 완전한 CRUD 기능을 갖춘 메모 앱으로, MCP 연
 - 💾 LocalStorage 기반 데이터 저장 (오프라인 지원)
 - 🎨 모던한 UI/UX with Tailwind CSS
 - 📝 마크다운 편집기 및 실시간 프리뷰
-- 🤖 **AI 메모 요약 기능 (Google Gemini 2.0 Flash)**
+- 🤖 **AI 메모 요약 기능 (OpenAI GPT)**
 - 👁️ 메모 상세 뷰어 모달
 
 ## 🛠 기술 스택
@@ -26,16 +26,16 @@ LocalStorage 기반의 완전한 CRUD 기능을 갖춘 메모 앱으로, MCP 연
 - **State Management**: React Hooks (useState, useEffect, useMemo)
 - **Package Manager**: npm
 - **Markdown**: React MDEditor (@uiw/react-md-editor)
-- **AI Integration**: Google Gemini API (@google/genai)
+- **AI Integration**: OpenAI API (gpt-4.1-mini)
 
 ## 📦 설치 및 실행
 
 ### 1. 환경 변수 설정
 
 ```bash
-# .env.local 파일 생성 후 Google Gemini API 키 설정
+# .env.local 파일 생성 후 OpenAI API 키 설정
 cp .env.example .env.local
-# GEMINI_API_KEY에 실제 API 키 입력
+# OPENAI_API_KEY에 실제 API 키 입력
 ```
 
 ### 2. 의존성 설치
@@ -101,7 +101,7 @@ memo-app/
 ### MemoDetailModal
 
 - **메모 상세 보기 전용 모달**
-- **AI 요약 기능 (Google Gemini 2.0 Flash)**
+- **AI 요약 기능 (OpenAI GPT)**
 - 마크다운 렌더링된 내용 표시
 - 편집/삭제 액션 버튼
 - ESC 키 및 배경 클릭으로 닫기
@@ -193,10 +193,10 @@ if (summary) {
 }
 ```
 
-**Google Gemini API 키 설정**:
+**OpenAI API 키 설정**:
 
-1. [Google AI Studio](https://makersuite.google.com/app/apikey)에서 API 키 발급
-2. `.env.local` 파일에 `GEMINI_API_KEY` 설정
+1. [OpenAI Platform](https://platform.openai.com/api-keys)에서 API 키 발급
+2. `.env.local` 파일에 `OPENAI_API_KEY` 설정
 3. 메모 상세 모달에서 ⚡ 버튼 클릭하여 요약 실행
 
 ### LocalStorage 직접 조작
