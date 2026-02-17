@@ -8,6 +8,7 @@ import {
   MEMO_CATEGORIES,
   DEFAULT_CATEGORIES,
 } from '@/types/memo'
+import { useTheme } from '@/components/ThemeProvider'
 
 interface MemoFormProps {
   isOpen: boolean
@@ -22,6 +23,7 @@ export default function MemoForm({
   onSubmit,
   editingMemo,
 }: MemoFormProps) {
+  const { theme } = useTheme()
   const [formData, setFormData] = useState<MemoFormData>({
     title: '',
     content: '',
@@ -174,7 +176,7 @@ export default function MemoForm({
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 내용 * (마크다운 지원)
               </label>
-              <div data-color-mode="light">
+              <div data-color-mode={theme}>
                 <MDEditor
                   value={formData.content}
                   onChange={val =>
@@ -185,7 +187,7 @@ export default function MemoForm({
                   }
                   preview="edit"
                   height={300}
-                  data-color-mode="light"
+                  data-color-mode={theme}
                   textareaProps={{
                     placeholder:
                       '마크다운으로 메모 내용을 작성하세요...\n\n예시:\n# 제목\n\n**굵은 글씨**\n\n- 목록 항목\n- 또 다른 항목\n\n```javascript\nconst hello = "world";\n```',
@@ -210,7 +212,7 @@ export default function MemoForm({
                   value={tagInput}
                   onChange={e => setTagInput(e.target.value)}
                   onKeyDown={handleTagInputKeyDown}
-                  className="placeholder-gray-400 text-black flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  className="placeholder-gray-400 text-gray-900 flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   placeholder="태그를 입력하고 Enter를 누르세요"
                 />
                 <button

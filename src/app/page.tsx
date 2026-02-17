@@ -6,8 +6,10 @@ import { Memo, MemoFormData } from '@/types/memo'
 import MemoList from '@/components/MemoList'
 import MemoForm from '@/components/MemoForm'
 import MemoDetailModal from '@/components/MemoDetailModal'
+import { useTheme } from '@/components/ThemeProvider'
 
 export default function Home() {
+  const { isDark, toggleTheme } = useTheme()
   const {
     memos,
     loading,
@@ -77,6 +79,13 @@ export default function Home() {
             </div>
 
             <div className="flex items-center space-x-4">
+              <button
+                onClick={toggleTheme}
+                aria-label={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white transition-colors"
+              >
+                <span aria-hidden="true">{isDark ? '☀️' : '🌙'}</span>
+              </button>
               <button
                 onClick={() => setIsFormOpen(true)}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
