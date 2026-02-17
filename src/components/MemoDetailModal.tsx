@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import MDEditor from '@uiw/react-md-editor'
 import { Memo, MEMO_CATEGORIES } from '@/types/memo'
 import { useMemoSummarize } from '@/hooks/useMemoSummarize'
+import { useTheme } from '@/components/ThemeProvider'
 
 interface MemoDetailModalProps {
   memo: Memo | null
@@ -22,6 +23,7 @@ export default function MemoDetailModal({
   onDelete,
   onUpdateSummary,
 }: MemoDetailModalProps) {
+  const { theme } = useTheme()
   const modalRef = useRef<HTMLDivElement>(null)
   const [summary, setSummary] = useState<string | null>(null)
   const [showSummary, setShowSummary] = useState(false)
@@ -275,7 +277,10 @@ export default function MemoDetailModal({
 
         {/* 내용 */}
         <div className="p-6">
-          <div className="prose prose-slate max-w-none" data-color-mode="light">
+          <div
+            className="prose prose-slate max-w-none"
+            data-color-mode={theme}
+          >
             <MDEditor.Markdown
               source={memo.content}
               style={{
@@ -283,7 +288,7 @@ export default function MemoDetailModal({
                 backgroundColor: 'transparent',
                 padding: '0',
               }}
-              data-color-mode="light"
+              data-color-mode={theme}
             />
           </div>
 
